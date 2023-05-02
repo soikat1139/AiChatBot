@@ -1,0 +1,169 @@
+
+    
+
+
+.botIcon{
+    color: black;
+    position: fixed;
+    bottom: 100px;
+    right: 60px;
+    cursor: pointer;
+}
+
+
+.botIcon svg:hover{
+    fill: #1e90ff;
+}
+
+.hoverIcon{
+   
+    position: absolute;
+    right: 45px;
+    bottom:45px;
+    width: 150px;
+    height: 30px;
+    background-color: #b8dafd;
+    padding: 3px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 5px;
+    font-family:'Montserrat';
+
+}
+
+.arrow{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    display: none;
+    transition: all 0.8s ease-in-out;
+
+}
+
+
+
+
+
+.botContainer{
+    position: fixed;
+    bottom: 140px;
+    right: 100px;
+    width: 300px;
+    height: 500px;
+    background-color: #0a192f;
+    border-radius: 10px 0 0 0;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+    /* transform: translateX(400px); */
+    display: none;
+    
+    font-family:  "Calibre","Inter","San Francisco","SF Pro Text",-apple-system,system-ui,sans-serif;
+    color: #64ffda;;
+ 
+    animation: botContainer 0.5s ease-in ;
+    animation-fill-mode: forwards;
+
+}
+.active{
+    display: block;
+    
+    /* transition: all 3s ease-in-out; */
+   
+}
+@keyframes  botContainer{
+    0%{
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    25%{
+        
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+    
+
+
+
+
+.line{
+    width:100%;
+    height: 2px;
+   background-color:  rgba(100,255,218,.1);
+
+}
+.botHeader{
+    text-align: center;
+    margin: 5px;
+    font-family:'Montserrat';
+    box-sizing: border-box;
+    text-shadow: 0 0 5px rgba(241, 84, 255, 0.5);
+    letter-spacing: 1px;
+}
+.botFooter{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.botFooter input{
+    width: 80%;
+    height: 35px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 0;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    color: rgb(9, 21, 39);
+}
+.botFooter button{
+    width: 20%;
+    height: 35px;
+    border: none;
+    outline: none;
+    background-color: rgb(9, 21, 39);
+    color: white;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    border-radius: 0 5px 0 0;
+    cursor: pointer;
+}
+
+.leftRespone{
+    text-align: left;
+    list-style: none;
+    margin-left: -40px;
+    font-size: 14px;
+    background-color:#495670;
+    border-radius: 5px;
+   padding-left: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    width: 98%;
+}
+.rightResponse{
+    text-align: right;
+    list-style: none;
+    font-size: 14px;
+    direction: rtl;
+    background-color:#495670;
+    border-radius: 5px;
+   padding-right: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+}
+.botBody{
+    height: 400px;
+    overflow: scroll;
+   
+    box-sizing: border-box;
+    font-size: 10px;
+    padding: 2px;
+    
+}
