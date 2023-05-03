@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect,useRef } from "react";
 import { useState } from 'react';
 import axios from 'axios';
 import style from './styles.module.css'
@@ -10,23 +10,48 @@ export default function Bot2() {
     const [inputValue, setInputValue] = useState('');
     const [response, setResponse] = useState(["What is the meaning of life?","Life Is a Very Philosophical Concept"]);
     const [activeContainer,setActiveContainer]=useState(false);
+    const [resRender,setResRender]=useState(false);
+    const chatWindowRef = useRef(null);
+    useEffect(() => {
+        // Scroll to the bottom of the chat window whenever the response changes
+        chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+      }, [response]);
+    
+    useEffect(() => {
+        const lastQuestion = response[response.length - 1];
 
-    console.log(`Go through the conversation and answer the first question ${response.join(' ')}`)
+        
+       
+    
+        const fetchData = async () => {
+            console.log("Hello from useEffect")
+          try {
+            const res = await axios.post('../../api/server1', { question: lastQuestion });
+            setResponse([...response, res.data]);
+
+          } catch (error) {
+            console.log(error);
+            setResponse([...response, 'Sorry, I do not know the answer to that question.']);
+          }
+        };
+    
+        if(response.length===2){
+            return ;
+        }else{
+            fetchData();
+        }
+      
+        
+      }, [resRender]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setResponse((prevResponse) => [...prevResponse, inputValue]);
-        console.log(`Go through the conversation and answer the last question ${response.join(' ')}`)
-    
-        try {
-          const res = await axios.post('../../api/server1', {question:`Go through the conversation and answer the first question ${response.join(' ')}` });
-         
-          setResponse((prevResponse) => [...prevResponse, res.data]);
-        } catch (error) {
-          console.log(error);
-          setResponse('An error occurred');
-        }
-        setInputValue('')
+        setInputValue('');
+        setResRender(!resRender);
+       
+       
       };
 
     return (
@@ -57,7 +82,7 @@ export default function Bot2() {
             AI Mentor
             </div>
             <div className={style.line}></div>
-            <div className={style.botBody}>
+            <div className={style.botBody} ref={chatWindowRef} >
                 <ul>
                     {response.map((item,index)=>{
                         if(index%2==0){

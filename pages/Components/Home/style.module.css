@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital@1&display=swap');
+
+
+.homeContainer{
+    box-shadow:  rgba(0, 0, 0, 0.3) 0px 3px 5px -3px;
+    /* border:2px solid red */
+}
+.heading p{
+    
+    font-family: 'Cardo', serif;
+    font-size: 14px;
+    /* border: 2px solid red; */
+    
+    
+
+}
+.heading h1{
+    font-family: 'Cardo', serif;
+    font-size: 30px;
+    letter-spacing: -1px;
+    color: #4a525a;
+    /* border: 2px solid red; */
+    font-weight: 100;
+    
+}
+.heading{
+  
+    text-align: center;
+    margin-top: 2.2rem;
+    line-height: 2px;
+    margin-bottom: 2.5rem;
+}
+.navbar{
+    /* border: 2px solid red; */
+    
+   
+    padding: 0 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Cardo', serif;
+    font-size: 12px;
+    
+}
+.navbar ul{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    /* border: 2px solid red; */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    /* border: 2px solid red; */
+    gap: 15px;
+    
+}
+
+.navbar li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5px;
+    margin-bottom: 4px;
+}
+.navbar li a{
+    text-decoration: none;
+}
+.navbar li svg{
+ width: 10px;
+
+}
