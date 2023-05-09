@@ -1,0 +1,10 @@
+
+
+.container2{
+    height: 90vh;
+    width: 10%;
+    background-color: #0a192f;
+    z-index: 1000;
+    position:absolute;
+    top: 100px;
+}

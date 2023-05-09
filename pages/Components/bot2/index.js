@@ -3,6 +3,13 @@ import React, { useEffect,useRef } from "react";
 import { useState } from 'react';
 import axios from 'axios';
 import style from './styles.module.css'
+import fullScreenBot from "../fullScreenBot"
+
+import styles from "./fullstyle.module.css"
+import Typing from 'react-typing-effect';
+import Typewriter from 'typewriter-effect';
+
+
 
 
 export default function Bot2() {
@@ -12,13 +19,52 @@ export default function Bot2() {
     const [activeContainer,setActiveContainer]=useState(false);
     const [resRender,setResRender]=useState(false);
     const chatWindowRef = useRef(null);
-    useEffect(() => {
+    const [maximize,setMaximize]=useState(false);
+
+
+    function setScreenSize(){
+        setMaximize(!maximize)
+    }
+    
+  
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setResponse((prevResponse) => [...prevResponse, inputValue]);
+        setInputValue('');
+        setResRender(!resRender);
+       
+       
+      };
+
+      const returnText=(item,index)=>{
+       
+
+        if(index===response.length-1){
+            return  <Typing speed={100} hideCursor={true} >{item}</Typing>
+
+        }
+        else{
+            return item;
+        }
+
+      }
+
+      
+     
+      useEffect(() => {
         // Scroll to the bottom of the chat window whenever the response changes
+        if(response.length===2){
+            return ;
+        }
         chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
       }, [response]);
     
     useEffect(() => {
         const lastQuestion = response[response.length - 1];
+
+        const prompt=`Go through this conversation ${response.join(' ')} and try to understand the context of the conversation and try to answer this ${lastQuestion} question asked by the user.`
 
         
        
@@ -44,17 +90,95 @@ export default function Bot2() {
         
       }, [resRender]);
 
+    return  maximize ? (<><div className={styles.container2} >
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setResponse((prevResponse) => [...prevResponse, inputValue]);
-        setInputValue('');
-        setResRender(!resRender);
-       
-       
-      };
+      <div className={styles.chatHeader}>
+       <div className={styles.headerText}>
+      <p>
+     AI Mentor
+      </p>
+      </div>
+   <div onClick={setScreenSize}>
 
-    return (
+    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M333 856V723H200v-60h193v193h-60Zm234 0V663h193v60H627v133h-60ZM200 489v-60h133V296h60v193H200Zm367 0V296h60v133h133v60H567Z"/></svg>
+      </div>
+
+      </div>
+      <div className={style.line}></div>
+      <div className={styles.botBody} ref={chatWindowRef} >
+                <ul>
+                    {response.map((item,index)=>{
+                        if(index%2==0){
+                            return <li className={styles.leftRespone} key={index}>
+                                {item}        
+                                </li>
+
+                        }
+                        else{
+                            return <li className={styles.rightResponse} key={index}>
+
+                                {
+                                    index===response.length-1 && item.length<50 ?      <Typewriter
+                                    options={{
+                                      cursor: '|',
+                                    }}
+                                    onInit={(typewriter) => {
+                                      typewriter.typeString(item)
+                                        .pauseFor(10)
+                                        .changeDelay(1)
+                                        
+                                        .start()
+                                        .callFunction(() => {
+                                          typewriter.stop();
+                                        })
+                                    }}
+                                  />:item
+                                }
+                                
+                           
+                             
+
+
+</li>}
+                    })}
+          </ul>
+                </div>
+                <div className={styles.aside}>
+                    <div className={styles.newChat}>
+                        New Chat
+
+                    </div>
+                    <div className={styles.newChat}>
+                      Your Account
+
+                    </div>
+
+                </div>
+                <form onSubmit={handleSubmit}>
+                <div className={styles.botFooter}>
+                    <div className={styles.botFooterInput}>
+                        <input type="text" placeholder="Enter Your Prompt" className={style.botFooterInputText}
+                        value={inputValue}
+                        onChange={(e)=>setInputValue(e.target.value)}
+
+                        />
+
+                        <button className={style.botFooterInputButton}
+                        type="submit"
+
+
+                        >Send</button>
+                        
+                        </div>
+                        </div>
+                        </form>
+
+
+        
+        
+        
+        
+        </div></>) : (
         <>
         <div className={
        style.botIcon
@@ -79,7 +203,13 @@ export default function Bot2() {
         <div className={
     activeContainer ? `${style.botContainer} ${style.active}`:`${style.botContainer}`}>
         <div className={style.botHeader}>
+            <p>
             AI Mentor
+            </p>
+            <div onClick={setScreenSize}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M200 856V663h60v133h133v60H200Zm0-367V296h193v60H260v133h-60Zm367 367v-60h133V663h60v193H567Zm133-367V356H567v-60h193v193h-60Z"/></svg>
+            </div>
+           
             </div>
             <div className={style.line}></div>
             <div className={style.botBody} ref={chatWindowRef} >
@@ -90,7 +220,34 @@ export default function Bot2() {
 
                         }
                         else{
-                            return <li className={style.rightResponse} key={index}>{item}</li>
+                            return <li className={style.rightResponse} key={index}>
+                                
+                                
+                                
+                                
+                                {
+                                    index===response.length-1 && item.length<50 ?      <Typewriter
+                                    options={{
+                                      cursor: '|',
+                                    }}
+                                    onInit={(typewriter) => {
+                                      typewriter.typeString(item)
+                                        .pauseFor(-3000)
+                                        .changeDelay(-3000)
+                                        
+                                        .start()
+                                        .callFunction(() => {
+                                          typewriter.stop();
+                                        })
+                                    }}
+                                  />:item
+                                }
+                                
+
+
+
+
+                            </li>
                         }
 })}
                 </ul>
