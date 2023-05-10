@@ -185,13 +185,14 @@
 
 }
 .botBody{
-    height: 400px;
+    height: 560px;
     overflow: scroll;
    
     box-sizing: border-box;
     font-size: 10px;
     padding: 2px;
-    color: #087cbe;;
+    color: #087cbe;
+    /* border: 2px solid red; */
     
 }
 

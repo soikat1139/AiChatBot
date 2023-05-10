@@ -3,7 +3,7 @@
 
 
 .homeContainer{
-    box-shadow:  rgba(0, 0, 0, 0.3) 0px 3px 5px -3px;
+  
     /* border:2px solid red */
     
 }
@@ -30,7 +30,7 @@
     text-align: center;
     margin-top: 2.2rem;
     line-height: 2px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 .navbar{
     /* border: 2px solid red; */
@@ -41,6 +41,14 @@
     margin-bottom: 1rem;
     font-family: 'Cardo', serif;
     font-size: 12px;
+    box-shadow:  rgba(0, 0, 0, 0.3) 0px 3px 5px -3px;
+    /* position: fixed; */
+    /* top: 30px; */
+    /* position:sticky ;
+    width: 100%;
+    top: 60px; */
+    /* top: 50px; */
+    /* border: 2px solid red; */
     
     
 }
@@ -71,33 +79,100 @@
  width: 10px;
 
 }
+.navbar li a:hover{
+   
+    cursor: pointer;
+    
+}
+.navbar li svg:hover{
+    cursor: pointer;
+  
+}
 
-.reading::before{
-    content: '';
-    width: 150px;
-    height: 120px;
-    background-color: rgba(24, 22, 22, 0.1);
+.readingbefore{
+    
+    width: 130px;
+    height: fit-content;
+    background-color: rgba(250, 250, 250, 0.9);
     position: absolute;
-    top: 30px;
+    top: 34px;
     border-radius: 10px;
     left: -6px;
+    padding: 2px 5px;
+    animation:list 1s ease-in-out forwards;
    
 }
 
-.reading::after{
-    content: '';
-    width: 110px;
+@keyframes list{
+    0%{
+        transform: translateX(-100px);
+        opacity: 0px;
+        /* background-color: antiquewhite; */
+    }
+    50%{
+        
+        opacity: 0.5px;
+        /* background-color: antiquewhite; */
+    }
+    100%{
+        translateY:0px;
+    }
+}
+.readingbefore p{
+    font-family: 'Cardo', serif;
+    color: rgba(0, 0, 10, 0.9);
+    font-size: 14px;
+    margin: 0px 2px;
+    cursor: pointer;
+  
+
+}
+.readingbefore p:hover{
+    color: rgba(14, 49, 247, 0.9);
+    font-size: 14px;
+    margin: 0px 2px;
+    cursor: pointer;
+ 
+    background-color: #d4e9fd;
+}
+
+.readingafter{
+    
+    width: 30px;
     height: 4px;
     background-color: rgba(54, 79, 221, 0.9);
     position: absolute;
-    top: 20px;
+    top: 25px;
     border-radius: 10px;
     left: 0px;
     left: -4px;
+  animation: reading 1s ease-in-out forwards;
+   
     
+}
+
+
+
+@keyframes reading {
+    0%{
+        width: 0px;
+    }
+    100%{
+        width: 110px;
+    }
 }
 
 
 .readingClass{
     position:relative;
+    /* border: 2px solid red; */
+    height: 40px;
+}
+
+.active{
+    display: block;
+}
+.none{
+    display: none;  
+
 }

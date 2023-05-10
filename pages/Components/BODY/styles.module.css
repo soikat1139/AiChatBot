@@ -1,0 +1,138 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+.container{
+    width: 100%;
+    height: 83vh;
+    display:block;
+}
+.body{
+    width:45%;
+    height: 100%;
+   
+    margin: 20px auto;
+    /* border: 2px solid black; */
+    padding: 15px 30px;
+    margin-bottom: 0px;
+    overflow: scroll;
+    font-family: 'Raleway', sans-serif;
+}
+.body p{
+    font-size: 17px;
+     font-weight: 500;
+     font-family: 'Raleway', sans-serif;
+    
+    
+}
+
+.navigation{
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+.heading{
+    font-size:30px;
+    color: #1e73be;
+    font-weight: 900;
+}
+.body .para{
+    font-size: 12px;
+    margin-top: -20px;
+
+   
+}
+.para strong{
+    font-weight: 550;
+}
+
+.box{
+    display: flex;
+    gap: 5px;
+    
+
+}
+.box1{
+    font-size: 13px;
+    border: 2px solid #e9e9e9;
+    width: 88px;
+    height: 35px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5672ad;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+.box1:hover{
+    background-color: #5672ad;
+    color: white;
+}
+.box2{
+    font-size: 13px;
+    border: 2px solid #e9e9e9;
+    width: 88px;
+    height: 35px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4ccef6;
+    font-weight: 600;
+    cursor: pointer;
+}
+.box2:hover{
+    background-color:  #4ccef6;
+    color: white;
+}
+.box3{
+    font-size: 13px;
+    border: 2px solid #e9e9e9;
+    width: 88px;
+    height: 35px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d85c63;
+    font-weight: 600;
+    cursor: pointer;
+}
+.box3:hover{
+    background-color: #d85c63;
+    color: white;
+}
+.box4{
+    font-size: 13px;
+    border: 2px solid #e9e9e9;
+    width: 88px;
+    height: 35px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #80c170;
+    font-weight: 600;
+    cursor: pointer;
+}
+.box4:hover{
+    background-color: #80c170;
+    color: white;
+}
+
+
+.secondHeading{
+    font-size: 24px;
+    color: #010a11;
+    font-weight: 900;
+    margin-top: 40px;
+    /* border: 2px solid red; */
+    text-align: center;
+
+}
+
+.body p::selection{
+    color: #fafafa;
+    background-color: #1b1717;
+
+}

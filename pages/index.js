@@ -2,7 +2,9 @@ import axios from 'axios';
 
 import Bot2 from "./Components/bot2"
 
-import Home from "./Components/Home"
+import Header from "./Components/Header"
+
+import Body from "./Components/Body"
 
 
 
@@ -13,9 +15,10 @@ export default function App() {
   
   return (
     <>
-     <Home/>
-     
+     <Header/>
       <Bot2/>
+      <Body/> 
+
      
     </>
   );
