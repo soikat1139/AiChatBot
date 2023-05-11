@@ -108,6 +108,19 @@
     height: 40px;
     gap: 98px;
 }
+.closeBtn{
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    height: 15px;
+    margin-right: 50px;
+}
+.closeBtn:hover{
+    color: #1e90ff;
+    transition: all 0.5s ease-in-out;
+    transform: scale(1.2);
+    cursor: pointer;
+}
 .botHeader div{
     display: flex;
     justify-content: flex-end;

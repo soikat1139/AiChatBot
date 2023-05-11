@@ -2,19 +2,74 @@ import React from 'react'
 import style from "./styles.module.css"
 import Image from 'next/image';
 import expertPic from "./experts.webp"
+import { useRef,useState } from 'react';
+import Modal from '../Modal';
 
-export default function  MainBody () {
+export default function  MainBody ({handleTasks}) {
+
+
+    const divRef = useRef(null);
+
+    const [position,setPosition]=useState({x:0,y:0});
+    const [showModal,setShowModal]=useState(false);
+
+    function handleContextMenu(event) {
+        event.preventDefault();
+      }
+
+
+    function handleSelect(e) {
+       
+          setPosition({x:e.pageX,y:e.pageY})
+
+        console.log("Mouse uP")
+        const selection = window.getSelection();
+        if (selection.toString().length > 0) {
+          console.log('Text selected:', selection.toString());
+        }
+      }
+
+
+
+
+      function handleModal(taskName,taskId){
+        setShowModal(false);
+        handleTasks(taskId,taskName,window.getSelection().toString())
+      }
+
+
 
   return (
-    <div className={style.container}>
+    <div className={style.container} onContextMenu={handleContextMenu} >
 
-    <div className={style.body}>
+   {
+         showModal && <Modal position={position}  handleModal={handleModal} />
+   }
+      
+
+
+    <div ref={divRef} className={style.body} 
+    
+
+    onMouseUp={handleSelect} onMouseDown={(e)=>{
+        
+
+        if(e.buttons===2){
+            setShowModal(true)
+        }
+        if(e.buttons===1){
+            setShowModal(false)
+        }
+    }}
+   
+    
+    >
 
         <p className={style.navigation}>
             {`Home > IELTS Reading > Reading Exercise`}
         </p>
 
-        <h1 className={style.heading}>
+        <h1 className={style.heading}  >
             IELTS Reading Exercise 101:Making the most of trends
             </h1>
 

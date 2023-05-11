@@ -1,6 +1,7 @@
 
 import style from "./style.module.css"
 import Navbar  from "./navbar"
+import Link from "next/link"
 
 
 
@@ -12,14 +13,16 @@ export default function Home(){
              "1.Reading Exercise",
             "2.Reading Exams",
             "3.Reading RESOURCES"
-        ]
+        ],
+        link:"#"
     },{
         title:"IELTS WRITING",
         items:[
              "1.writing Exercise",
             "2.writing Exams",
             "3.writing RESOURCES"
-        ]
+        ],
+        link:"#"
     }
     ,{
         title:"IELTS LISTENING",
@@ -27,7 +30,8 @@ export default function Home(){
              "1.listening Exercise",
             "2.listening Exams",
             "3.listening RESOURCES"
-        ]
+        ],
+        link:"#"
     }
 
     ,{
@@ -36,7 +40,8 @@ export default function Home(){
              "1.speaking Exercise",
             "2.speaking Exams",
             "3.speaking RESOURCES"
-        ]
+        ],
+        link:"#"
     }
     ,{
         title:"VOCABULARY",
@@ -44,7 +49,8 @@ export default function Home(){
              "1.Exercise",
             "2.Exams",
             "3.RESOURCES"
-        ]
+        ],
+        link:"/vocabulary/"
     }
     ,{
         title:"OTHER RESOURE",
@@ -52,7 +58,8 @@ export default function Home(){
              "1. Exercise",
             "2. Exams",
             "3. RESOURCES"
-        ]
+        ],
+        link:"#"
     }
 ]
 
@@ -60,8 +67,13 @@ export default function Home(){
         <>
         <div className={style.homeContainer}>
             <div className={style.heading}>
+                <Link href="/"  style={{
+                    textDecoration:"none",
+                    color:"black"
+                }}  >
                 <h1>IELTS Practice AI Mentor's</h1>
                 <p>Experimental Project For My Own Self</p>
+                </Link>
             </div>
             <div className={style.navbar}>
                 <ul>

@@ -2,6 +2,7 @@
 import React from 'react'
 import style from "./style.module.css"
 import {useState} from "react"
+import Link from "next/link"
 
 export default function Navbar({item}) {
 
@@ -24,11 +25,11 @@ export default function Navbar({item}) {
 
   return (
     <li className={style.readingClass} onMouseLeave={handleMouseLeave} >
-    <a href='#' className={style.reading}   onMouseEnter={handleMouseEnter}
+    <Link href={item.link} className={style.reading}   onMouseEnter={handleMouseEnter}
 
 onClick={handleClick}   >
         {item.title}
-    </a>
+    </Link>
     <div className={isHovered ? `${style.readingbefore}`: `${style.none}`}   >
         {item.items.map((item,index)=>{
             return(

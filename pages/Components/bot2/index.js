@@ -8,6 +8,7 @@ import fullScreenBot from "../fullScreenBot"
 import styles from "./fullstyle.module.css"
 import Typing from 'react-typing-effect';
 import Typewriter from 'typewriter-effect';
+import { CloseButton } from '@chakra-ui/react'
 
 
 
@@ -20,6 +21,11 @@ export default function Bot2() {
     const [resRender,setResRender]=useState(false);
     const chatWindowRef = useRef(null);
     const [maximize,setMaximize]=useState(false);
+
+
+    function handleClose(){
+        setActiveContainer(false)
+    }
 
 
     function setScreenSize(){
@@ -58,13 +64,13 @@ export default function Bot2() {
        
     
         const fetchData = async () => {
-            console.log("Hello from useEffect")
+           
           try {
-            const res = await axios.post('../../api/server1', { question: lastQuestion });
+            const res = await axios.post('../../api/server1', { question: prompt });
             setResponse([...response, res.data]);
 
           } catch (error) {
-            console.log(error);
+            // console.log(error);
             setResponse([...response, 'Sorry, I do not know the answer to that question.']);
           }
         };
@@ -184,6 +190,7 @@ export default function Bot2() {
         <div className={
     activeContainer ? `${style.botContainer} ${style.active}`:`${style.botContainer}`}>
         <div className={style.botHeader}>
+        <CloseButton className={style.closeBtn} onClick={handleClose}/>
             <p>
             AI Mentor
             </p>

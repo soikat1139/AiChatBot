@@ -1,0 +1,30 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+.list1{
+    color: black;
+    list-style: none;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+  margin-left: -35px;
+    gap: 8px;
+    height: 25px;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-bottom: 20px;
+
+}
+.list1 div svg{
+    /* border: 2px solid red; */
+    margin-top: 6.5px;
+    
+}
+.list1:hover{
+    background-color: rgb(199, 199, 199);
+}
+
