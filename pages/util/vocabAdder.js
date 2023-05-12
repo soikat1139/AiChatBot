@@ -33,11 +33,22 @@ const prompt=`I want to know the meaning of the word ${firstWord} you should tel
     const response = await axios.post(url, data);
     const sentence=response.data.answer;
 
+
+    console.log(sentence)
+    console.log(typeof sentence)
+
     // console.log(sentence)
-    const regex = /\{[\s\S]*\}/;
-const match = sentence.match(regex);
-// console.log(match[0])
-    localStorage.setItem("words",JSON.stringify(match[0]))
+//     const regex = /\{[\s\S]*\}/;
+// const match = sentence.match(regex);
+// console.log(typeof match[0])
+// console.log( match[0])
+
+// const newWords=  JSON.parse(match[0] );
+// console.log(typeof newWords)
+
+// console.log(newWords)
+
+// localStorage.setItem("words",JSON.stringify(newWords))
 
       // return (match[0]);
       return true;

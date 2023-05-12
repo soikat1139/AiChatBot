@@ -23,7 +23,7 @@ export default function Bot({tasks}) {
     "No idea..."
   ]
 
-  store("Love")
+  // store("Love")
 
 
 

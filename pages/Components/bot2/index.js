@@ -1,7 +1,7 @@
 
 import React, { useEffect,useRef } from "react";
 import { useState } from 'react';
-import axios from 'axios';
+const axios=require('axios');
 import style from './styles.module.css'
 import fullScreenBot from "../fullScreenBot"
 
@@ -58,7 +58,10 @@ export default function Bot2() {
     useEffect(() => {
         const lastQuestion = response[response.length - 1];
 
-        const prompt=`Go through this conversation ${response.join(' ')} and try to understand the context of the conversation and try to answer this ${lastQuestion} question asked by the user.`
+        const prompt=`Go through this conversation ${response.join(' ')} and try to understand the context of the conversation and try to answer this  question only 
+         ${lastQuestion} .`
+
+        const prompt2=`answer this question only: { ${lastQuestion} } . if you need any context you can go through this conversation: { ${response.join(' ')} }.`
 
         
        
@@ -66,11 +69,21 @@ export default function Bot2() {
         const fetchData = async () => {
            
           try {
-            const res = await axios.post('../../api/server1', { question: prompt });
+            const res = await axios.post('../../api/server1', { question: prompt2 });
+
+            // const question=prompt2;
+            // const url = 'http://127.0.0.1:5000/api/get_answer';
+            // const data = { question };
+            // const response = await axios.post(url, data);
+            //   const sentence=response.data.answer;
+
+
+
             setResponse([...response, res.data]);
+            // setResponse([...response, sentence]);
 
           } catch (error) {
-            // console.log(error);
+            console.log(error.message);
             setResponse([...response, 'Sorry, I do not know the answer to that question.']);
           }
         };
