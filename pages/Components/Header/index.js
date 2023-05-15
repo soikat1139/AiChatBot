@@ -14,7 +14,7 @@ export default function Home(){
             "2.Reading Exams",
             "3.Reading RESOURCES"
         ],
-        link:"#"
+        link:"/test/"
     },{
         title:"IELTS WRITING",
         items:[

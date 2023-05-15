@@ -69,7 +69,7 @@ export default function Bot2() {
         const fetchData = async () => {
            
           try {
-            const res = await axios.post('../../api/server1', { question: prompt2 });
+            const res = await axios.post('../../api/server1', { question: lastQuestion });
 
             // const question=prompt2;
             // const url = 'http://127.0.0.1:5000/api/get_answer';

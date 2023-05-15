@@ -9,18 +9,6 @@ import Store from "../Components/storeVocab"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 export default function Vocabulary() {
 
 
