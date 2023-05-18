@@ -13,9 +13,9 @@
 
 from bardapi import Bard
 
-token = 'Vgg4iSfZO1XYe_GWcAD8j7ZuCpGNm2_7YbnS8WFSh7M_ADWLf4mgpjCV2UTOLkt0XQ_BLw.'
+token = "Vgg4iSfZO1XYe_GWcAD8j7ZuCpGNm2_7YbnS8WFSh7M_ADWLf4mgpjCV2UTOLkt0XQ_BLw."
 bard = Bard(token=token)
-response=bard.get_answer('What is 2+2 .I want the response to be in JSON response like this:````` {"Answer":4}```` ')['content']
+response=bard.get_answer('What is 5+2 .I want the response to be in JSON response like this:````` {"Answer":4}```` ')['content']
 
 print(response)
 print(type(response))
