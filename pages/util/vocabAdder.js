@@ -1,66 +1,58 @@
-
-const axios=require('axios');
-
-
-
-
+import { Configuration, OpenAIApi } from "openai";
 
 export default async function store(text) {
+  const firstWord = text.split(" ")[0];
 
-const firstWord = text.split(" ")[0];
-// console.log(firstWord)
+  const configuration = new Configuration({
+    apiKey: 'YOUR_API_KEY',
+  });
+  const openai = new OpenAIApi(configuration);
 
+  const prompt = `What is the meaning of the word: ${firstWord}
+    Format the entire response in JSON string.
+    Here is the Example response:
+    [
+      {
+        "word": "About",
+        "meaning": {"mn1": "On the subject of", "mn2": "connected with"},
+        "example": {
+          "ex1": "We talked about the problem.",
+          "ex2": "I was about to leave when the phone rang."
+        },
+        "partsOfSpeech": {
+          "pos1": "preposition",
+          "pos2": "adverb"
+        }
+      },
+      {
+        "word": "Above",
+        "meaning": {"mn1": "In or to a higher position than something else", "mn2": "More than an amount or level"},
+        "example": {
+          "ex1": "The birds were flying high above.",
+          "ex2": "Temperatures will be above average for the time of year."
+        },
+        "partsOfSpeech": {
+          "pos1": "preposition",
+          "pos2": "adverb"
+        }
+      }
+    ]`;
 
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: prompt,
+    temperature: 0,
+    max_tokens: 2024,
+  });
 
-const prompt=`I want to know the meaning of the word ${firstWord} you should tell me the meaning of the word .I want you to answer me with a javaScript object.Here is  how you should answer :
-'''
-<div>
-<p>Word:Love</p>
-<p>meaning:</p>
-</div>
+  console.log("Response:", response);
 
-`
+  const result = JSON.parse(response.data.choices[0].text);
+  console.log("Parsed Result:", result);
 
-        
-       
-    
+  // localStorage.setItem("words", JSON.stringify(result[0]));
 
-   
-  try {
-
-
-    const question=prompt;
-    const url = 'http://127.0.0.1:5000/api/get_answer';
-    const data = { question };
-    const response = await axios.post(url, data);
-    const responseString=response.data.answer;
-
-
-    console.log("Hello1")
-    
-const start = responseString.indexOf("{");
-const end = responseString.lastIndexOf("}") + 1;
-const jsonString = responseString.substring(start+1, end-1);
-console.log(jsonString)
-
-console.log("Hello2")
-const arr=jsonString.split(',')
-
-console.log("Arr"+arr[0])
-
-
-
-
-
-      return true;
-
-  } catch (error) {
-    console.log(error);
-
-    return false;
-    
-  }
-
+  return result;
 }
 
 
@@ -84,22 +76,3 @@ console.log("Arr"+arr[0])
 
 
 
-
-
-
-
-
-    // console.log(sentence)
-//     const regex = /\{[\s\S]*\}/;
-// const match = sentence.match(regex);
-// console.log(typeof match[0])
-// console.log( match[0])
-
-// const newWords=  JSON.parse(match[0] );
-// console.log(typeof newWords)
-
-// console.log(newWords)
-
-// localStorage.setItem("words",JSON.stringify(newWords))
-
-      // return (match[0]);
