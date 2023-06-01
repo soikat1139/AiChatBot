@@ -2,89 +2,26 @@
 import style from "./styles.module.css"
 import { Divider } from '@chakra-ui/react'
 import { useEffect,useState } from "react"
+import { set } from "date-fns";
 
-
-
-
-
-
-
+const axios=require('axios');
 
 
 export default  function Store() {
 
-
-    let words2 = [
-        {
-          word: 'Love',
-          meaning: {
-            mn1: 'A strong feeling of affection',
-            mn2: 'A great interest and pleasure in something'
-          },
-          example: {
-            ex1: 'I have a deep love for my family.',
-            ex2: 'She has a love of music.'
-          },
-          partsOfSpeech: { pos1: 'noun', pos2: 'verb' }
-        },
-        {
-          word: 'Love',
-          meaning: {
-            mn1: 'A strong feeling of affection',
-            mn2: 'A great interest and pleasure in something'
-          },
-          example: {
-            ex1: 'I have a deep love for my family.',
-            ex2: 'She has a love of music.'
-          },
-          partsOfSpeech: { pos1: 'noun', pos2: 'verb' }
-        },
-        {
-          word: 'Love',
-          meaning: {
-            mn1: 'A strong feeling of affection',
-            mn2: 'A great interest and pleasure in something'
-          },
-          example: {
-            ex1: 'I have a deep love for my family.',
-            ex2: 'She has a love of music.'
-          },
-          partsOfSpeech: { pos1: 'noun', pos2: 'verb' }
-        }
-      ]
-    
-
-    const[words,setWords]=useState(words2)
-
-    
+    const[words,setWords]=useState([])
 
 
+useEffect(async () => {
+    const allWords=await axios.get('/api/server3')
+    console.log(allWords.data)
 
-
-useEffect(() => {
-
-  
-
-
-
-    const newWord=  JSON.parse(localStorage.getItem("words") );
-       
-    if(newWord){
-        words2=[...words2,newWord];
-        setWords([...words,newWord])
-      
-    }
-
-
-
-
+    setWords(allWords.data)
 
 
 }, [])
 
     
-
-
   return (
     <div className={style.container} >
         <div className={style.body}>

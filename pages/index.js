@@ -23,29 +23,13 @@ export default function App() {
     }
   )
 
+
+
   function handleTasks (taskId,taskName,selectedText){
     setTasks({taskId,taskName,selectedText})
     
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
   return (
     <>
      <Header/>

@@ -1,19 +1,26 @@
 import React from 'react'
 import style from "./styles.module.css"
 import { Spinner } from '@chakra-ui/react'
-import { useRef,useState } from 'react';
+import { useRef,useState,useEffect } from 'react';
 import { Divider } from '@chakra-ui/react'
 import { Stack } from '@chakra-ui/react'
 import stores from "../../util/vocabAdder"
 import store from '../../util/vocabAdder';
+import { add, set } from 'date-fns';
+const axios=require('axios');
 
 
 
 export default function Bot({tasks}) {
 
-  const id=tasks.taskId;
+  
+  const [think,setThink]=useState(true);
+  const [response,setResponse]=useState("");
+  const [saveWords,setSaveWord]=useState([])
 
-  const [think,setThink]=useState(false);
+
+  
+
   const actions=[
     "Adding Voclabulary.....",
     "Finding The Meaning.....",
@@ -22,11 +29,53 @@ export default function Bot({tasks}) {
     "Generating The Questions.....",
     "No idea..."
   ]
+async  function addVocab(tasktext){
+    // setThink(true);
 
- console.log(store("About")) 
+    console.log(saveWords.includes(tasktext))
+    console.log(saveWords)
+    if(saveWords.includes(tasktext)){
+      return "Already Added"
+    }
+  const word=await store(tasktext);
+  console.log("OPpps")
+  console.log(word)
+
+  if(word){
+    const res=await axios.post('http://localhost:3001/',{word:word});
+    // setThink(false);
+   console.log(res.data)
+   return res.data;
+    
+  }
+  return "Something Is Wrong....."
+}
+
+// console.log(tasks.taskName=="Add To Vocabulary")
+
+if(tasks.taskName=="Add To Vocabulary"){
+
+  // setThink(true);
+
+   addVocab(tasks.selectedText)
+    .then((res)=>{
+      setSaveWord([...saveWords,tasks.selectedText])
+      
+      console.log(res)
+      setThink(false);
+      setResponse(res);
+    }
+    )
+    .catch((err)=>{
+      console.log(err)
+      setThink(false);
+    }
+    )
 
 
+}
 
+// console.log(tasks.taskId)
 
 
 
@@ -65,22 +114,20 @@ export default function Bot({tasks}) {
           </div>
 
           <div className={style.notification}>
-          <Spinner className={style.Spinner2} size='xl' color='red'/>
-              <p>{actions[id]}</p>
+            {
+              think ? (<><Spinner className={style.Spinner2} size='xl' color='red'/>
+              <p>{actions[tasks.taskId]}</p></>) :(<div>Vocabulary Added</div>)
+            }
+          
 
           </div>
-          <div>
-            {tasks.taskId}
-          </div>
+          {
+            response.length>0 ? (<div className={style.notification}>
+            {response}
+          </div>): null
+          }
+         
 
-
-
-
-  
-
-
-  
-  
 
 
 

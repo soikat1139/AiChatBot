@@ -61,7 +61,7 @@ export default function Bot2() {
         const prompt=`Go through this conversation ${response.join(' ')} and try to understand the context of the conversation and try to answer this  question only 
          ${lastQuestion} .`
 
-        const prompt2=`answer this question only: { ${lastQuestion} } . if you need any context you can go through this conversation: { ${response.join(' ')} }.`
+        const prompt2=`{ ${lastQuestion} } .}.`
 
         
        

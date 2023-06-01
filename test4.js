@@ -36,12 +36,12 @@ class Bard {
     }
     const resp = await this.session.get('https://bard.google.com/');
 
-    console.log(resp.data)
+    
     if (resp.status !== 200) {
       throw new Error(`Response code not 200. Response Status is ${resp.status}`);
     }
     const snim0eMatch = resp.data.match(/SNlM0e":"(.*?)"/);
-    console.log(snim0eMatch)
+    
     if (!snim0eMatch) {
       throw new Error('SNlM0e value not found in response. Check __Secure-1PSID value.');
     }
@@ -99,6 +99,11 @@ class Bard {
 const  token="Vgg4iSfZO1XYe_GWcAD8j7ZuCpGNm2_7YbnS8WFSh7M_ADWLf4mgpjCV2UTOLkt0XQ_BLw."
 
 
-const bardAPI=new Bard(token,20);
+const bardAPI=new Bard(token);
 
-bardAPI.get_answer("What is the capital of India?").then((response)=>{ console.log(response)}   )   
+bardAPI.get_answer("What is the capital of India?").then((response)=>{ 
+  
+  console.log(response)
+
+
+}   )   
